@@ -1,7 +1,7 @@
 <div align="center">
   <img src="https://img.shields.io/badge/STATUS-OPERATIONAL-ff0000?style=for-the-badge&labelColor=ff0000" alt="Status" />
   <img src="https://img.shields.io/badge/SYS-V1.0-ff0000?style=for-the-badge&labelColor=ff0000" alt="Version" />
-  <img src="https://img.shields.io/badge/AI-GEMINI_ACTIVE-ff0000?style=for-the-badge&labelColor=ff0000" alt="AI Status" />
+  <img src="https://img.shields.io/badge/AI-BAYMAX_ACTIVE-ff0000?style=for-the-badge&labelColor=ff0000" alt="AI Status" />
 
   <br />
   <br />
@@ -11,7 +11,7 @@
   <br />
   <p>
     <b>A unified, high-performance dashboard for your personal health.</b><br>
-    CareFlow combines precise metric tracking, interactive geospatial mapping, and an integrated Gemini AI assistant into a single, distraction-free command center.
+    CareFlow combines precise metric tracking, interactive geospatial mapping, and an integrated Baymax AI assistant into a single, distraction-free command center.
   </p>
   <hr style="border: 1px solid #ff0000; width: 50%;" />
 </div>
@@ -23,6 +23,47 @@
 Most health applications are cluttered with unnecessary gamification and confusing navigation. **CareFlow takes a radically different approach.** 
 
 Designed with an ultra-minimalist, dark-themed interface, CareFlow is built for users who want total control and visibility over their well-being. It acts as a comprehensive daily hub where you can log your diet, monitor hydration, manage medication schedules, and instantly locate critical care facilities. By stripping away visual noise, CareFlow ensures your most important health data is always front and center, completely readable at a glance.
+
+<br />
+
+### ❖ SYSTEM ARCHITECTURE & DATA FLOW
+
+The following flowchart illustrates the data interaction between the user, the core telemetry modules, and external intelligence APIs.
+
+```mermaid
+flowchart TD
+    classDef core fill:#000000,stroke:#ff0000,stroke-width:2px,color:#ffffff;
+    classDef external fill:#111111,stroke:#555555,stroke-width:1px,color:#aaaaaa;
+    classDef ai fill:#2d0000,stroke:#ff0000,stroke-width:2px,color:#ffffff;
+
+    User([Operator / User])
+    
+    subgraph TELEMETRY HUB
+    Dashboard[Command Dashboard]:::core
+    Nutri[Nutrition Tracker]:::core
+    Meds[Medication Scheduler]:::core
+    Map[Medical Proximity Map]:::core
+    end
+    
+    subgraph INTELLIGENCE ENGINE
+    Baymax[Baymax AI Assistant]:::ai
+    end
+    
+    subgraph EXTERNAL APIs
+    Leaflet[Leaflet Geospatial]:::external
+    GoogleGemini[Google Gemini API]:::external
+    end
+    
+    User -->|Views Data| Dashboard
+    User <-->|Natural Language| Baymax
+    
+    Dashboard --> Nutri
+    Dashboard --> Meds
+    Dashboard --> Map
+    
+    Map <-->|Fetches Location| Leaflet
+    Baymax <-->|Queries| GoogleGemini
+```
 
 <br />
 
@@ -59,51 +100,10 @@ Designed with an ultra-minimalist, dark-themed interface, CareFlow is built for 
 <summary><b>4. AI HEALTH ASSISTANT</b></summary>
 <br>
 <blockquote>
-  <b>Powered by Google Gemini.</b><br>
+  <b>Powered by Baymax (Gemini Engine).</b><br>
   We've integrated a powerful natural language AI directly into the dashboard. You can ask complex health queries, get advice on nutrition, or ask for help navigating the app, all without ever leaving your telemetry feed.
 </blockquote>
 </details>
-
-<br />
-
-### ❖ SYSTEM ARCHITECTURE & DATA FLOW
-
-The following flowchart illustrates the data interaction between the user, the core telemetry modules, and external intelligence APIs.
-
-```mermaid
-flowchart TD
-    classDef core fill:#000000,stroke:#ff0000,stroke-width:2px,color:#ffffff;
-    classDef external fill:#111111,stroke:#555555,stroke-width:1px,color:#aaaaaa;
-    classDef ai fill:#2d0000,stroke:#ff0000,stroke-width:2px,color:#ffffff;
-
-    User([Operator / User])
-    
-    subgraph TELEMETRY HUB
-    Dashboard[Command Dashboard]:::core
-    Nutri[Nutrition Tracker]:::core
-    Meds[Medication Scheduler]:::core
-    Map[Medical Proximity Map]:::core
-    end
-    
-    subgraph INTELLIGENCE ENGINE
-    Gemini[Gemini AI Assistant]:::ai
-    end
-    
-    subgraph EXTERNAL APIs
-    Leaflet[Leaflet Geospatial]:::external
-    GoogleGemini[Google Gemini API]:::external
-    end
-    
-    User -->|Views Data| Dashboard
-    User <-->|Natural Language| Gemini
-    
-    Dashboard --> Nutri
-    Dashboard --> Meds
-    Dashboard --> Map
-    
-    Map <-->|Fetches Location| Leaflet
-    Gemini <-->|Queries| GoogleGemini
-```
 
 <br />
 
@@ -115,7 +115,7 @@ CareFlow is built on a modern, high-speed technology stack to ensure zero-latenc
 | :--- | :--- |
 | **React 19 & Vite** | Powers the core user interface, ensuring lightning-fast load times and a highly responsive frontend experience. |
 | **TailwindCSS** | Drives the uncompromising, pure-black design system, utilizing custom utility classes for absolute visual consistency. |
-| **Google Gemini API** | The brain behind the intelligence engine, allowing users to interact with a conversational AI for health insights. |
+| **Google Gemini API** | The backend intelligence engine powering the Baymax AI assistant, allowing users to interact with a conversational AI for health insights. |
 | **Leaflet & React-Leaflet** | Renders the high-performance, interactive geospatial map used for locating medical facilities. |
 | **Framer Motion & GSAP** | Handles the fluid, micro-animations and seamless page transitions to make the application feel alive and engineered. |
 
@@ -143,7 +143,7 @@ npm install
 ```
 
 **[STEP 3] : CONFIGURE AI UPLINK**  
-To enable the Gemini AI assistant, create a `.env.local` file in the root directory and add your API key:
+To enable the Baymax AI assistant, create a `.env.local` file in the root directory and add your API key:
 ```env
 GEMINI_API_KEY=your_actual_api_key_here
 ```
