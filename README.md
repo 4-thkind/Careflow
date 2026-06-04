@@ -1,56 +1,88 @@
-# CAREFLOW [TELEMETRY_SYS_V1]
-> **AUSTERE HEALTH MONITORING INTERFACE**
+<div align="center">
+  <img src="https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&color=000000&labelColor=3a3a3f" alt="Status" />
+  <img src="https://img.shields.io/badge/SYS-V1.0-blue?style=for-the-badge&color=000000&labelColor=3a3a3f" alt="Version" />
+  <img src="https://img.shields.io/badge/UPLINK-SECURE-green?style=for-the-badge&color=000000&labelColor=3a3a3f" alt="Uplink" />
 
----
+  <br />
+  <br />
 
-CareFlow is a mission-oriented health tracking application built on aerospace design principles. It abandons traditional UI fluff in favor of a pure black canvas, full-bleed imagery, and highly legible, condensed typography. Every pixel is engineered for clarity, focus, and rapid data comprehension.
+  <h1><b>C A R E F L O W</b></h1>
+  <p><b>[ T E L E M E T R Y _ S Y S T E M ]</b></p>
+  <br />
+  <p>
+    An austere, mission-grade health tracking interface. Engineered with aerospace design principles for precise, zero-latency metric monitoring.
+  </p>
+  <hr style="border: 1px solid #3a3a3f; width: 50%;" />
+</div>
 
-## I. SYSTEM OVERVIEW
-This application acts as a central telemetry hub for human health data. It strips away gradients, shadows, and unnecessary chrome to deliver an uncompromising view of your vital metrics.
+<br />
 
-**Core Modules:**
-- **[CMD]** `Command Dashboard`: High-contrast, real-time health data aggregation.
-- **[NTR]** `Nutrition & Hydration`: Precision tracking of caloric and fluid intake.
-- **[MED]** `Medical Proximity & Regimen`: Geolocation of critical care facilities alongside unyielding medication schedules.
-- **[AI]** `Gemini Engine`: Natural language system queries operating directly within the telemetry feed.
+### ❖ CORE MODULES
 
-## II. DESIGN ARCHITECTURE
-CareFlow strictly adheres to the aerospace design parameters defined in the core design document. The interface is an exercise in negation. 
+*Click to expand telemetry details:*
 
-- **Surface:** Pure Black (`#000000`). No tints, no gradients.
-- **Typography:** `D-DIN-Bold` for display headers. Engineered with vertical compression (0.95 line-height) and optical horizontal expansion (1.6px letter spacing). All caps, always.
-- **Chrome:** Minimal. Ghost-outlined pill buttons and 1px hairlines (`#3a3a3f`) are the only defining boundaries.
-- **Depth:** Purely photographic. Full-bleed background imagery provides all necessary visual hierarchy and atmosphere.
+<details>
+<summary><b>[CMD] COMMAND DASHBOARD</b></summary>
+<br>
+<blockquote>High-contrast, real-time health data aggregation. The primary unified display for daily telemetry.</blockquote>
+</details>
 
-## III. ENGINEERING MANIFEST
-The technical foundation is chosen for speed and reliable execution.
+<details>
+<summary><b>[NTR] NUTRITION & HYDRATION</b></summary>
+<br>
+<blockquote>Precision tracking of caloric and fluid intake with zero visual noise.</blockquote>
+</details>
 
-- **Render Engine:** React 19 / Vite
-- **Styling:** TailwindCSS v4 (configured for absolute adherence to the design system)
-- **Kinematics:** Framer Motion & GSAP (for micro-animations and zero-latency transitions)
-- **Geospatial:** Leaflet / React-Leaflet
-- **Intelligence:** Node/Express + Gemini API
+<details>
+<summary><b>[MED] PROXIMITY & REGIMEN</b></summary>
+<br>
+<blockquote>Geospatial routing for critical care facilities alongside unyielding medication schedules.</blockquote>
+</details>
 
-## IV. IGNITION SEQUENCE
+<details>
+<summary><b>[AI] INTELLIGENCE ENGINE</b></summary>
+<br>
+<blockquote>Natural language querying operating directly within the live telemetry feed.</blockquote>
+</details>
 
-**System Requirements:**
-- Node.js runtime environment (v18+)
+<br />
 
-**1. Initialize Workspace**
+### ❖ ARCHITECTURE PARAMETERS
+
+| COMPONENT | SPECIFICATION | STATUS |
+| :--- | :--- | :---: |
+| **Surface** | Pure Black (`#000000`). No tints, no gradients. | `LOCKED` |
+| **Typography** | `D-DIN-Bold`. High-compression, 1.6px tracking. | `LOCKED` |
+| **Chrome** | Ghost-outlined pills, 1px hairlines (`#3a3a3f`). | `LOCKED` |
+| **Render** | React 19 / Vite / TailwindCSS v4 | `ACTIVE` |
+| **Kinematics** | Framer Motion & GSAP | `ACTIVE` |
+
+<br />
+
+### ❖ IGNITION PROTOCOL
+
+> [!WARNING]
+> Ensure local environment meets system requirements before initiating launch sequence (Node.js v18+).
+
+**[1] ESTABLISH LOCAL LINK**
+```bash
+git clone https://github.com/4-thkind/Careflow.git
+cd Careflow
+```
+
+**[2] INSTALL DEPENDENCIES**
 ```bash
 npm install
 ```
 
-**2. Configure Telemetry Keys**
-The AI assistant requires an active Gemini uplink. Create a `.env.local` file at the project root:
-```env
-GEMINI_API_KEY=insert_key_here
-```
-
-**3. Launch**
+**[3] INITIATE LAUNCH**
 ```bash
 npm run dev
 ```
 
----
-*End of Manifest.*
+<br />
+
+<div align="center">
+  <p><i>Telemetry interface accessible at designated local port.</i></p>
+  <p><b><kbd>CTRL</kbd> + <kbd>C</kbd> TO ABORT</b></p>
+</div>
