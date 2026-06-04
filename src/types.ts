@@ -60,6 +60,8 @@ export interface Medicine {
   taken: boolean;
   category?: 'prescribed' | 'supplement' | 'suggestion';
   mealTiming?: string;
+  lastTakenDate?: string;
+  dateAdded?: string;
 }
 
 export interface WaterLog {
