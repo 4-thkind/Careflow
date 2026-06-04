@@ -1,46 +1,56 @@
-# CAREFLOW
+# CAREFLOW [TELEMETRY_SYS_V1]
+> **AUSTERE HEALTH MONITORING INTERFACE**
 
-> **Mission-grade health tracking.**
+---
 
-CareFlow is an austere, high-performance health tracking interface engineered with aerospace design principles. Built on a pure black canvas with a focus on typography and full-bleed imagery, it provides a precise, no-nonsense environment for monitoring your vital metrics: nutrition, hydration, medicine routines, and nearby medical facilities.
+CareFlow is a mission-oriented health tracking application built on aerospace design principles. It abandons traditional UI fluff in favor of a pure black canvas, full-bleed imagery, and highly legible, condensed typography. Every pixel is engineered for clarity, focus, and rapid data comprehension.
 
-## Core Telemetry
+## I. SYSTEM OVERVIEW
+This application acts as a central telemetry hub for human health data. It strips away gradients, shadows, and unnecessary chrome to deliver an uncompromising view of your vital metrics.
 
-- **Command Dashboard:** A unified command center for your daily health metrics.
-- **Nutrition & Hydration:** Track caloric intake and water consumption with engineered precision.
-- **Medical Proximity:** Integrated mapping to locate nearby hospitals and emergency centers instantly.
-- **Medicine Regimen:** Uncompromising reminders for your medicinal schedule.
-- **BMI Analysis:** Real-time body mass index calculation and tracking.
-- **AI Assistant:** Integrated Gemini-powered chatbot for health queries and system assistance.
+**Core Modules:**
+- **[CMD]** `Command Dashboard`: High-contrast, real-time health data aggregation.
+- **[NTR]** `Nutrition & Hydration`: Precision tracking of caloric and fluid intake.
+- **[MED]** `Medical Proximity & Regimen`: Geolocation of critical care facilities alongside unyielding medication schedules.
+- **[AI]** `Gemini Engine`: Natural language system queries operating directly within the telemetry feed.
 
-## Technical Foundation
+## II. DESIGN ARCHITECTURE
+CareFlow strictly adheres to the aerospace design parameters defined in the core design document. The interface is an exercise in negation. 
 
-- **Frontend:** React 19, Vite, TailwindCSS v4
-- **Motion:** Framer Motion & GSAP for subtle, engineered micro-interactions
-- **Mapping:** Leaflet & React-Leaflet for geospatial data
-- **Backend & AI:** Express Server powering the Gemini AI integration
+- **Surface:** Pure Black (`#000000`). No tints, no gradients.
+- **Typography:** `D-DIN-Bold` for display headers. Engineered with vertical compression (0.95 line-height) and optical horizontal expansion (1.6px letter spacing). All caps, always.
+- **Chrome:** Minimal. Ghost-outlined pill buttons and 1px hairlines (`#3a3a3f`) are the only defining boundaries.
+- **Depth:** Purely photographic. Full-bleed background imagery provides all necessary visual hierarchy and atmosphere.
 
-## Launch Sequence
+## III. ENGINEERING MANIFEST
+The technical foundation is chosen for speed and reliable execution.
 
-**Prerequisites:** Node.js (v18 or higher)
+- **Render Engine:** React 19 / Vite
+- **Styling:** TailwindCSS v4 (configured for absolute adherence to the design system)
+- **Kinematics:** Framer Motion & GSAP (for micro-animations and zero-latency transitions)
+- **Geospatial:** Leaflet / React-Leaflet
+- **Intelligence:** Node/Express + Gemini API
 
-1. **Install Dependencies:**
-   ```bash
-   npm install
-   ```
+## IV. IGNITION SEQUENCE
 
-2. **Configure Environment:**
-   Set your Gemini API key in a `.env.local` file at the root of the project to enable AI features:
-   ```env
-   GEMINI_API_KEY=your_gemini_api_key_here
-   ```
+**System Requirements:**
+- Node.js runtime environment (v18+)
 
-3. **Ignition:**
-   ```bash
-   npm run dev
-   ```
-   *The telemetry interface will be accessible locally.*
+**1. Initialize Workspace**
+```bash
+npm install
+```
 
-## Design Philosophy
+**2. Configure Telemetry Keys**
+The AI assistant requires an active Gemini uplink. Create a `.env.local` file at the project root:
+```env
+GEMINI_API_KEY=insert_key_here
+```
 
-The interface is an exercise in negation: pure black canvas, tight vertical leading, uppercase industrial typography, and ghost-outlined CTAs. It prioritizes data clarity and visual minimalism over decorative elements, delivering an unapologetically focused user experience.
+**3. Launch**
+```bash
+npm run dev
+```
+
+---
+*End of Manifest.*
