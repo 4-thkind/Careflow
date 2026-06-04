@@ -1,106 +1,155 @@
 <div align="center">
-  <img src="https://img.shields.io/badge/STATUS-OPERATIONAL-success?style=for-the-badge&color=000000&labelColor=3a3a3f" alt="Status" />
-  <img src="https://img.shields.io/badge/SYS-V1.0-blue?style=for-the-badge&color=000000&labelColor=3a3a3f" alt="Version" />
-  <img src="https://img.shields.io/badge/UPLINK-SECURE-green?style=for-the-badge&color=000000&labelColor=3a3a3f" alt="Uplink" />
+  <img src="https://img.shields.io/badge/STATUS-OPERATIONAL-ff0000?style=for-the-badge&labelColor=ff0000" alt="Status" />
+  <img src="https://img.shields.io/badge/SYS-V1.0-ff0000?style=for-the-badge&labelColor=ff0000" alt="Version" />
+  <img src="https://img.shields.io/badge/AI-GEMINI_ACTIVE-ff0000?style=for-the-badge&labelColor=ff0000" alt="AI Status" />
 
   <br />
   <br />
 
   <h1><b>C A R E F L O W</b></h1>
-  <p><b>[ T E L E M E T R Y _ S Y S T E M ]</b></p>
+  <p><b>[ ADVANCED HEALTH TELEMETRY & MANAGEMENT ]</b></p>
   <br />
   <p>
-    <b>An austere, mission-grade health tracking interface.</b><br>
-    Engineered with aerospace design principles, CareFlow treats your personal health data with the uncompromising precision of a command center. Zero latency, zero visual noise, absolute focus.
+    <b>A unified, high-performance dashboard for your personal health.</b><br>
+    CareFlow combines precise metric tracking, interactive geospatial mapping, and an integrated Gemini AI assistant into a single, distraction-free command center.
   </p>
-  <hr style="border: 1px solid #3a3a3f; width: 50%;" />
+  <hr style="border: 1px solid #ff0000; width: 50%;" />
 </div>
 
 <br />
 
-### ❖ THE MISSION
+### ❖ WHAT IS CAREFLOW?
 
-Most health apps are cluttered with gamified interfaces, aggressive colors, and unnecessary distractions. **CareFlow takes a radically different approach.** 
+Most health applications are cluttered with unnecessary gamification and confusing navigation. **CareFlow takes a radically different approach.** 
 
-Inspired by the raw, industrial design of aerospace telemetry systems, CareFlow is built on a pure black canvas. It utilizes high-compression industrial typography, full-bleed imagery, and single ghost-outlined actions to display your vital metrics. Whether you're tracking your daily hydration, calculating your Body Mass Index (BMI), managing a strict medication schedule, or locating emergency medical facilities, the interface gets out of your way and lets the data speak. 
-
-<br />
-
-### ❖ CORE MODULES
-
-<details open>
-<summary><b>[CMD] COMMAND DASHBOARD</b></summary>
-<br>
-<blockquote>
-  <b>The Central Hub.</b><br> 
-  A high-contrast, unified command center that aggregates all your real-time health data. This is your primary viewport for daily telemetry, engineered so you can read your vital stats at a single glance.
-</blockquote>
-</details>
-
-<details open>
-<summary><b>[NTR] NUTRITION & HYDRATION</b></summary>
-<br>
-<blockquote>
-  <b>Engineered Precision.</b><br>
-  Track your daily caloric intake and fluid consumption. The interface strips away complex graphs in favor of bold, highly legible metrics that show exactly where you stand against your daily targets.
-</blockquote>
-</details>
-
-<details open>
-<summary><b>[MED] PROXIMITY & REGIMEN</b></summary>
-<br>
-<blockquote>
-  <b>Critical Logistics.</b><br> 
-  Features a live geospatial map integration (via Leaflet) to instantly route you to nearby hospitals and critical care facilities. This is paired with an uncompromising medication regimen tracker, ensuring you never miss a scheduled dose.
-</blockquote>
-</details>
-
-<details open>
-<summary><b>[AI] INTELLIGENCE ENGINE</b></summary>
-<br>
-<blockquote>
-  <b>Natural Language Processing.</b><br>
-  An integrated Gemini-powered intelligence engine that operates directly within the live telemetry feed. You can ask complex health queries or get system assistance without ever leaving the command dashboard.
-</blockquote>
-</details>
+Designed with an ultra-minimalist, dark-themed interface, CareFlow is built for users who want total control and visibility over their well-being. It acts as a comprehensive daily hub where you can log your diet, monitor hydration, manage medication schedules, and instantly locate critical care facilities. By stripping away visual noise, CareFlow ensures your most important health data is always front and center, completely readable at a glance.
 
 <br />
 
-### ❖ ARCHITECTURE PARAMETERS
+### ❖ CORE FEATURES & CAPABILITIES
 
-| COMPONENT | SPECIFICATION | STATUS |
-| :--- | :--- | :---: |
-| **Surface Canvas** | Pure Black (`#000000`). No tints, no gradients, no shadows. | `LOCKED` |
-| **Typography** | `D-DIN-Bold`. High-compression leading (0.95), wide tracking (1.6px). | `LOCKED` |
-| **Chrome / UI** | Ghost-outlined pill buttons, 1px hairlines (`#3a3a3f`). | `LOCKED` |
-| **Render Engine** | React 19 / Vite / TailwindCSS v4 | `ACTIVE` |
-| **Kinematics** | Framer Motion & GSAP for zero-latency micro-transitions | `ACTIVE` |
+<details open>
+<summary><b>1. THE COMMAND DASHBOARD</b></summary>
+<br>
+<blockquote>
+  <b>Your Daily Health at a Glance.</b><br> 
+  The central hub aggregates all your live data. You can instantly see your BMI trends, daily caloric intake, and upcoming medication doses in one high-contrast, unified view. It's designed to give you a complete picture of your health the moment you open the app.
+</blockquote>
+</details>
+
+<details open>
+<summary><b>2. NUTRITION & HYDRATION TRACKER</b></summary>
+<br>
+<blockquote>
+  <b>Precision Dietary Monitoring.</b><br>
+  Log your meals and fluid intake with zero friction. The interface replaces confusing charts with bold, highly legible progress indicators, making it incredibly easy to see exactly where you stand against your daily health targets.
+</blockquote>
+</details>
+
+<details open>
+<summary><b>3. MEDICAL PROXIMITY MAP</b></summary>
+<br>
+<blockquote>
+  <b>Critical Logistics & Emergency Routing.</b><br> 
+  Equipped with a live interactive map, CareFlow can instantly locate nearby hospitals, clinics, and pharmacies based on your current location. In an emergency, or when traveling, you have immediate access to critical care routing.
+</blockquote>
+</details>
+
+<details open>
+<summary><b>4. AI HEALTH ASSISTANT</b></summary>
+<br>
+<blockquote>
+  <b>Powered by Google Gemini.</b><br>
+  We've integrated a powerful natural language AI directly into the dashboard. You can ask complex health queries, get advice on nutrition, or ask for help navigating the app, all without ever leaving your telemetry feed.
+</blockquote>
+</details>
 
 <br />
 
-### ❖ IGNITION PROTOCOL
+### ❖ SYSTEM ARCHITECTURE & DATA FLOW
+
+The following flowchart illustrates the data interaction between the user, the core telemetry modules, and external intelligence APIs.
+
+```mermaid
+flowchart TD
+    classDef core fill:#000000,stroke:#ff0000,stroke-width:2px,color:#ffffff;
+    classDef external fill:#111111,stroke:#555555,stroke-width:1px,color:#aaaaaa;
+    classDef ai fill:#2d0000,stroke:#ff0000,stroke-width:2px,color:#ffffff;
+
+    User([Operator / User])
+    
+    subgraph TELEMETRY HUB
+    Dashboard[Command Dashboard]:::core
+    Nutri[Nutrition Tracker]:::core
+    Meds[Medication Scheduler]:::core
+    Map[Medical Proximity Map]:::core
+    end
+    
+    subgraph INTELLIGENCE ENGINE
+    Gemini[Gemini AI Assistant]:::ai
+    end
+    
+    subgraph EXTERNAL APIs
+    Leaflet[Leaflet Geospatial]:::external
+    GoogleGemini[Google Gemini API]:::external
+    end
+    
+    User -->|Views Data| Dashboard
+    User <-->|Natural Language| Gemini
+    
+    Dashboard --> Nutri
+    Dashboard --> Meds
+    Dashboard --> Map
+    
+    Map <-->|Fetches Location| Leaflet
+    Gemini <-->|Queries| GoogleGemini
+```
+
+<br />
+
+### ❖ TECHNICAL STACK
+
+CareFlow is built on a modern, high-speed technology stack to ensure zero-latency interactions and reliable data management.
+
+| TECHNOLOGY | PURPOSE & IMPLEMENTATION |
+| :--- | :--- |
+| **React 19 & Vite** | Powers the core user interface, ensuring lightning-fast load times and a highly responsive frontend experience. |
+| **TailwindCSS** | Drives the uncompromising, pure-black design system, utilizing custom utility classes for absolute visual consistency. |
+| **Google Gemini API** | The brain behind the intelligence engine, allowing users to interact with a conversational AI for health insights. |
+| **Leaflet & React-Leaflet** | Renders the high-performance, interactive geospatial map used for locating medical facilities. |
+| **Framer Motion & GSAP** | Handles the fluid, micro-animations and seamless page transitions to make the application feel alive and engineered. |
+
+<br />
+
+### ❖ LAUNCH PROTOCOL (LOCAL SETUP)
 
 > [!WARNING]  
 > **SYSTEM PRE-FLIGHT CHECK**  
-> Ensure your local environment has the **Node.js (v18+)** runtime environment active before initiating the launch sequence.
+> Ensure your local machine has **Node.js (v18 or higher)** installed before attempting to run the application.
 
 <br>
 
-**[STEP 1] : ESTABLISH LOCAL LINK**  
-Pull the source code to your local machine and navigate into the primary directory.
+**[STEP 1] : CLONE THE REPOSITORY**  
+Download the source code to your local machine.
 ```bash
 git clone https://github.com/4-thkind/Careflow.git
 cd Careflow
 ```
 
-**[STEP 2] : MOUNT DEPENDENCIES**  
-Install the required architectural packages, rendering engines, and geospatial tools.
+**[STEP 2] : INSTALL DEPENDENCIES**  
+Install all required packages, including the rendering engines and geospatial tools.
 ```bash
 npm install
 ```
 
-**[STEP 3] : INITIATE MAIN THRUST**  
-Start the Vite development server. The telemetry interface will spin up instantly.
+**[STEP 3] : CONFIGURE AI UPLINK**  
+To enable the Gemini AI assistant, create a `.env.local` file in the root directory and add your API key:
+```env
+GEMINI_API_KEY=your_actual_api_key_here
+```
+
+**[STEP 4] : INITIATE LOCAL SERVER**  
+Start the development environment. The interface will compile and launch in your browser.
 ```bash
 npm run dev
 ```
@@ -108,6 +157,6 @@ npm run dev
 <br />
 
 <div align="center">
-  <p><i>The telemetry feed is now broadcasting to your local port.</i></p>
-  <p><b>PRESS <kbd>CTRL</kbd> + <kbd>C</kbd> TO ABORT SEQUENCE</b></p>
+  <p><i>The application is now running on your local port.</i></p>
+  <p><b>PRESS <kbd>CTRL</kbd> + <kbd>C</kbd> TO STOP THE SERVER</b></p>
 </div>
