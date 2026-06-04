@@ -31,7 +31,8 @@ export default function MedicineReminder({ medicines, onUpdate }: MedicineRemind
       days: newMed.days!,
       taken: false,
       category: newMed.category as any,
-      mealTiming: newMed.mealTiming
+      mealTiming: newMed.mealTiming,
+      dateAdded: new Date().toLocaleDateString()
     };
     
     onUpdate([...medicines, med]);
@@ -39,8 +40,17 @@ export default function MedicineReminder({ medicines, onUpdate }: MedicineRemind
     setNewMed({ name: '', dosage: '', time: '08:00', days: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], taken: false, category: 'prescribed', mealTiming: 'After Breakfast' });
   };
 
+  const todayStr = new Date().toLocaleDateString();
+  const todayDay = new Date().toLocaleDateString('en-US', { weekday: 'short' });
+
   const toggleTaken = (id: string) => {
-    onUpdate(medicines.map(m => m.id === id ? { ...m, taken: !m.taken } : m));
+    onUpdate(medicines.map(m => {
+      if (m.id === id) {
+        const isTakenToday = m.taken && m.lastTakenDate === todayStr;
+        return { ...m, taken: !isTakenToday, lastTakenDate: !isTakenToday ? todayStr : undefined };
+      }
+      return m;
+    }));
   };
 
   const removeMed = (id: string) => {
@@ -53,21 +63,25 @@ export default function MedicineReminder({ medicines, onUpdate }: MedicineRemind
   };
 
   const renderMedicineCards = (items: Medicine[], category: 'prescribed' | 'supplement' | 'suggestion') => {
-    if (items.length === 0) {
+    const todaysItems = items.filter(m => m.dateAdded === todayStr);
+
+    if (todaysItems.length === 0) {
       return (
         <button 
           onClick={() => openAddModal(category)}
           className="w-full py-16 text-center border border-[#3a3a3f] hover:border-white transition-colors flex flex-col items-center justify-center gap-4 group h-full cursor-pointer bg-transparent"
         >
-          <p className="eyebrow text-[#5a5a5f] group-hover:text-white transition-colors">NO ACTIVE PROTOCOLS</p>
+          <p className="eyebrow text-[#5a5a5f] group-hover:text-white transition-colors">NO ACTIVE PROTOCOLS TODAY</p>
           <p className="text-[10px] font-bold uppercase tracking-wider text-white opacity-0 group-hover:opacity-100 transition-opacity">[ INITIALIZE ]</p>
         </button>
       );
     }
     return (
       <div className="flex flex-col gap-6 w-full">
-        {items.map((med) => (
-          <div key={med.id} className={`card ${med.taken ? 'border-white' : ''}`}>
+        {todaysItems.map((med) => {
+          const isTaken = med.taken && med.lastTakenDate === todayStr;
+          return (
+          <div key={med.id} className={`card ${isTaken ? 'border-white' : ''}`}>
             <div className="flex justify-between items-start mb-6">
               <div>
                 <h3 className="display-lg text-2xl">{med.name}</h3>
@@ -81,23 +95,23 @@ export default function MedicineReminder({ medicines, onUpdate }: MedicineRemind
 
             <div className="border border-[#3a3a3f] p-4 flex justify-between items-center mb-6">
               <span className="eyebrow text-white">T-MINUS: {med.time}</span>
-              <span className="text-[10px] font-bold tracking-wider" style={{ color: med.taken ? '#ffffff' : '#5a5a5f' }}>
-                {med.taken ? 'ADMINISTERED' : 'PENDING'}
+              <span className="text-[10px] font-bold tracking-wider" style={{ color: isTaken ? '#ffffff' : '#5a5a5f' }}>
+                {isTaken ? 'ADMINISTERED' : 'PENDING'}
               </span>
             </div>
 
             <button
               onClick={() => toggleTaken(med.id)}
               className={`w-full py-3 text-[11px] font-bold uppercase tracking-wider transition-colors border ${
-                med.taken
+                isTaken
                   ? 'bg-white text-black border-white'
                   : 'bg-transparent text-white border-[#3a3a3f] hover:border-white'
               }`}
             >
-              {med.taken ? 'PROTOCOL CONFIRMED' : 'CONFIRM ADMINISTRATION'}
+              {isTaken ? 'PROTOCOL CONFIRMED' : 'CONFIRM ADMINISTRATION'}
             </button>
           </div>
-        ))}
+        )})}
         <button 
           onClick={() => openAddModal(category)}
           className="w-full py-4 text-center border border-dashed border-[#3a3a3f] hover:border-white transition-colors text-[#5a5a5f] hover:text-white text-[10px] font-bold uppercase tracking-wider cursor-pointer bg-transparent mt-2"

@@ -22,6 +22,30 @@ export default function ProfileForm({ initialData, onSave }: ProfileFormProps) {
     onSave(formData);
   };
 
+  const totalInches = Math.round((formData.height || 0) / 2.54);
+  const displayFeet = isNaN(totalInches) ? '' : Math.floor(totalInches / 12);
+  const displayInches = isNaN(totalInches) ? '' : totalInches % 12;
+
+  const handleHeightChange = (type: 'feet' | 'inches', value: string) => {
+    let newFeet = typeof displayFeet === 'number' ? displayFeet : 0;
+    let newInches = typeof displayInches === 'number' ? displayInches : 0;
+
+    if (type === 'feet') newFeet = parseInt(value, 10);
+    if (type === 'inches') newInches = parseInt(value, 10);
+
+    if (isNaN(newFeet) && isNaN(newInches)) {
+      setFormData({ ...formData, height: NaN as any });
+      return;
+    }
+    
+    newFeet = isNaN(newFeet) ? 0 : newFeet;
+    newInches = isNaN(newInches) ? 0 : newInches;
+
+    const totalNewInches = (newFeet * 12) + newInches;
+    const cm = Math.round(totalNewInches * 2.54);
+    setFormData({ ...formData, height: cm });
+  };
+
   return (
     <div className="card w-full max-w-2xl mx-auto border border-[#3a3a3f] bg-[#0a0a0a]">
       <div className="mb-8">
@@ -55,14 +79,34 @@ export default function ProfileForm({ initialData, onSave }: ProfileFormProps) {
           </div>
 
           <div className="space-y-2">
-            <label className="eyebrow block">HEIGHT (CM)</label>
-            <input
-              type="number"
-              required
-              value={formData.height}
-              onChange={(e) => setFormData({ ...formData, height: parseInt(e.target.value) })}
-              className="w-full"
-            />
+            <label className="eyebrow block">HEIGHT</label>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="relative">
+                <input
+                  type="number"
+                  required
+                  min="0"
+                  value={displayFeet}
+                  onChange={(e) => handleHeightChange('feet', e.target.value)}
+                  className="w-full pr-8"
+                  placeholder="FT"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-[#5a5a5f] font-bold pointer-events-none">FT</span>
+              </div>
+              <div className="relative">
+                <input
+                  type="number"
+                  required
+                  min="0"
+                  max="11"
+                  value={displayInches}
+                  onChange={(e) => handleHeightChange('inches', e.target.value)}
+                  className="w-full pr-8"
+                  placeholder="IN"
+                />
+                <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] text-[#5a5a5f] font-bold pointer-events-none">IN</span>
+              </div>
+            </div>
           </div>
 
           <div className="space-y-2">
