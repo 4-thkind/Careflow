@@ -15,9 +15,10 @@ interface DashboardProps {
   meals: MealLog[];
   water: WaterLog[];
   medicines: Medicine[];
+  onNavigate: (tab: string) => void;
 }
 
-export default function Dashboard({ profile, meals, water, medicines }: DashboardProps) {
+export default function Dashboard({ profile, meals, water, medicines, onNavigate }: DashboardProps) {
   // Calculate BMI
   const bmi = (profile.weight / ((profile.height / 100) ** 2)).toFixed(1);
   const bmiValue = parseFloat(bmi);
@@ -102,6 +103,7 @@ export default function Dashboard({ profile, meals, water, medicines }: Dashboar
           title="BODY MASS INDEX" 
           value={bmi} 
           subValue={`STATUS: ${bmiCategory}`}
+          onClick={() => onNavigate('bmi')}
         />
         <StatCard 
           title="HYDRATION LEVEL" 
@@ -111,9 +113,13 @@ export default function Dashboard({ profile, meals, water, medicines }: Dashboar
             : "OPTIMAL"
           }
           progress={(todayWater / waterGoal) * 100}
+          onClick={() => onNavigate('water')}
         />
 
-        <div className="card flex flex-col justify-center">
+        <div 
+          className="card flex flex-col justify-center cursor-pointer hover:border-white transition-colors"
+          onClick={() => onNavigate('nutrition')}
+        >
           <div className="eyebrow mb-6">NUTRITIONAL INTAKE</div>
           <div className="space-y-6">
             <div>
@@ -202,13 +208,18 @@ export default function Dashboard({ profile, meals, water, medicines }: Dashboar
         </div>
 
         {/* Medicine Schedule */}
-        <div className="card lg:col-span-1">
+        <div 
+          className="card lg:col-span-1 cursor-pointer hover:border-white transition-colors"
+          onClick={() => onNavigate('medicine')}
+        >
           <div className="mb-6 border-b border-[#3a3a3f] pb-4">
-            <h3 className="eyebrow">PHARMACOLOGICAL PROTOCOLS</h3>
+            <h3 className="eyebrow">PHARMACOLOGICAL PROTOCOLS ({todayDay})</h3>
           </div>
           <div className="space-y-4">
-            {medicines.length > 0 ? (
-              medicines.map(med => (
+            {medicines.filter(m => m.dateAdded === todayStr).length > 0 ? (
+              medicines.filter(m => m.dateAdded === todayStr).map(med => {
+                const isTaken = med.taken && med.lastTakenDate === todayStr;
+                return (
                 <div key={med.id} className="border border-[#3a3a3f] p-4 flex justify-between items-center">
                   <div>
                     <p className="text-sm font-bold uppercase">{med.name}</p>
@@ -216,14 +227,14 @@ export default function Dashboard({ profile, meals, water, medicines }: Dashboar
                   </div>
                   <div className="text-right">
                     <p className="text-sm font-bold">{med.time}</p>
-                    <p className="text-[10px] uppercase font-bold mt-1" style={{ color: med.taken ? '#4ade80' : '#f87171' }}>
-                      {med.taken ? 'ADMINISTERED' : 'PENDING'}
+                    <p className="text-[10px] uppercase font-bold mt-1" style={{ color: isTaken ? '#4ade80' : '#f87171' }}>
+                      {isTaken ? 'ADMINISTERED' : 'PENDING'}
                     </p>
                   </div>
                 </div>
-              ))
+              )})
             ) : (
-              <p className="caption-text text-[#5a5a5f]">NO PROTOCOLS SCHEDULED.</p>
+              <p className="caption-text text-[#5a5a5f]">NO PROTOCOLS SCHEDULED TODAY.</p>
             )}
           </div>
         </div>
@@ -232,9 +243,12 @@ export default function Dashboard({ profile, meals, water, medicines }: Dashboar
   );
 }
 
-function StatCard({ title, value, subValue, progress }: { title: string, value: string | number, subValue: string, progress?: number }) {
+function StatCard({ title, value, subValue, progress, onClick }: { title: string, value: string | number, subValue: string, progress?: number, onClick?: () => void }) {
   return (
-    <div className="card flex flex-col justify-between">
+    <div 
+      className={`card flex flex-col justify-between ${onClick ? 'cursor-pointer hover:border-white transition-colors' : ''}`}
+      onClick={onClick}
+    >
       <div>
         <div className="eyebrow mb-4">{title}</div>
         <div className="display-xl mb-4">{value}</div>

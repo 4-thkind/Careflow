@@ -186,6 +186,7 @@ useEffect(() => {
                 meals={mealLogs}
                 water={waterLogs}
                 medicines={medicines}
+                onNavigate={setActiveTab}
               />
             )}
             {activeTab === 'hospitals' && <HospitalMap initialUserLocation={userLocation} />}
