@@ -16,7 +16,7 @@ const geminiApiKey = process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !=
 const genAI = geminiApiKey ? new GoogleGenAI({ apiKey: geminiApiKey }) : null;
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001'],
+  origin: [frontendOrigin, 'http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001'],
   credentials: true,
 }));
 app.use(express.json());
