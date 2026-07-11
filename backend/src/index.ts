@@ -15,7 +15,10 @@ const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY && process.env.GOOGLE_M
 const geminiApiKey = process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'YOUR_GEMINI_API_KEY' ? process.env.GEMINI_API_KEY : undefined;
 const genAI = geminiApiKey ? new GoogleGenAI({ apiKey: geminiApiKey }) : null;
 
-app.use(cors({ origin: frontendOrigin }));
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'http://127.0.0.1:3000', 'http://127.0.0.1:3001'],
+  credentials: true,
+}));
 app.use(express.json());
 
 type ChatRole = 'user' | 'bot';
@@ -564,7 +567,7 @@ async function resolveBookingAction(message: string) {
 }
 
 app.get('/api/health', (_req, res) => {
-  res.json({ ok: true, status: 'CareFlow backend running' });
+  res.json({ ok: true, status: 'CareFlow backend running', hasMapKey: !!googleMapsApiKey });
 });
 
 app.get('/api/hospitals/nearby', async (req, res) => {

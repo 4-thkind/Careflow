@@ -69,12 +69,10 @@ useEffect(() => {
           setUserLocation([position.coords.latitude, position.coords.longitude]);
         },
         () => {
-          setUserLocation([28.6139, 77.2090]);
+          // Do nothing on error, keep it null to show permission prompt
         },
         { enableHighAccuracy: true, timeout: 10000, maximumAge: 300000 }
       );
-    } else {
-      setUserLocation([28.6139, 77.2090]);
     }
   }, []);
 
