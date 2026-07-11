@@ -683,7 +683,11 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`CareFlow backend running on http://localhost:${port}`);
-  console.log('AI System Initialized.');
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`CareFlow backend running on http://localhost:${port}`);
+    console.log('AI System Initialized.');
+  });
+}
+
+export default app;
